@@ -18,8 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/dashboard', )->name('dashboard');
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
