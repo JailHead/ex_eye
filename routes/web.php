@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AlertController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeviceController;
+use App\Livewire\NewDeviceForm;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +27,8 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/alertas', [AlertController::class, 'index'])->name('alerts');
+
+    Route::get('/nuevo-dispositivo', [DeviceController::class, 'index'])->name('new-device');
 });

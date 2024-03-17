@@ -2,28 +2,42 @@
 
 namespace App\Livewire;
 
-use App\Models\Device;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Alert;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class AlertList extends Component
 {
-    use WithPagination;
+    public $title = '';
 
-    #[Computed()]
-    public function devices(){        
-        return Device::where('user_id', Auth::id())->get();
-    }
-    #[Computed()]
-    public function userEmail(){        
-        return Auth::user()->email;
-    }
 
     public function render()
     {
         return view('livewire.alert-list');
+    }
+
+    #[Computed()]
+    public function doc(){
+        $doc = Alert::where('title', $this->title)->first();
+
+        return response()->json([
+            'documento' => $doc
+        ]);
+    }
+
+    public function newDocument()
+    {
+        $success = Alert::create([
+            'title' => $this->title,
+            'description' => 'This is a test'
+        ]);
+
+        $success->save();
+        
+        return session()->flash('success', 'Nuevo documento creado');
+    }
+
+    public function deleteDocuments(){
+        Alert::truncate();
     }
 }

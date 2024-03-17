@@ -17,6 +17,15 @@
                         <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                             {{ __('Home') }}
                         </x-nav-link>                        
+                        <x-nav-link href="{{ route('alerts') }}" :active="request()->routeIs('alerts')">
+                            {{ __('Alertas') }}
+                        </x-nav-link>                        
+                        <x-nav-link href="#">
+                            {{ __('Estadisticas') }}
+                        </x-nav-link>
+                        <x-nav-link href="{{ route('new-device') }}" :active="request()->routeIs('new-device')">
+                            {{ __('Nuevo Dispositivo') }}
+                        </x-nav-link>
                     </div>
                 @endauth
             </div>

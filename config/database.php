@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mysql'),    
 
     /*
     |--------------------------------------------------------------------------
@@ -92,7 +92,12 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
-
+        
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('DB_URI', 'mongodb+srv://2122300432:92254103d@cluster0.og0mgdq.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0'),
+            'database'=>'test'
+        ]
     ],
 
     /*

@@ -1,5 +1,6 @@
 <!-- Settings Dropdown -->
-<div>
+<div class="flex items-center">
+    <h2 class="text-gray-700 text-sm">{{ Auth::user()->name }}</h2>
     <div class="ms-3 relative">        
         <x-dropdown align="right" width="48">
             <x-slot name="trigger">
@@ -27,11 +28,11 @@
             <x-slot name="content">
                 <!-- Account Management -->
                 <div class="block px-4 py-2 text-xs text-gray-400">
-                    {{ __('Manage Account') }}
+                    {{ __('Configurar cuenta') }}
                 </div>
     
                 <x-dropdown-link wire:navigate href="{{ route('profile.show') }}">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-dropdown-link>
     
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -46,8 +47,8 @@
                 <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf
     
-                    <x-dropdown-link wire:navigate href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                        {{ __('Log Out') }}
+                    <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                        {{ __('log out') }}
                     </x-dropdown-link>
                 </form>
             </x-slot>

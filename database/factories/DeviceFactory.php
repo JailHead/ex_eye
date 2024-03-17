@@ -23,7 +23,7 @@ class DeviceFactory extends Factory
         return [
             'user_id' => $randomUserId,
             'name' => $this->faker->text(),
-            'type' => $this->faker->text(),
+            'type' => $this->faker->randomElement(["Sensor", "Camara"]),
             'location' => $this->faker->text(),
             'active' => $this->faker->boolean(),
         ];

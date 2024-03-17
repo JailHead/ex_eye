@@ -1,15 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-red-800 leading-tight">
             {{ __('Home') }}
         </h2>
     </x-slot>
 
     <div class="w-full py-12">
-        <div class="mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <livewire:alert-list />
-            </div>
-        </div>
+        <livewire:devices-list />
     </div>
 </x-app-layout>

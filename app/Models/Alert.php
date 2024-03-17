@@ -2,22 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 
 class Alert extends Model
 {
-    use HasFactory;
+    protected $connection = 'mongodb';
 
-    protected $guarded = [];
+    protected $collection = 'alerts';
 
-    protected $casts = [
-        //general data registered '2024-03-04 02:16:05'
-        'created_at' => 'datetime',
-    ];
-
-    public function originDevice()
-    {
-        return $this->belongsTo(Device::class, 'device_id');
-    }
+    protected $fillable = ['device', 'title', 'description', 'image', 'video'];
 }

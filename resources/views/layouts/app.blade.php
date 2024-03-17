@@ -19,7 +19,7 @@
     @livewireStyles
 </head>
 
-<body class="font-light antialiased">
+<body class="font-light antialiased box-border">
     <x-banner />
 
     @include('layouts.includes.header')

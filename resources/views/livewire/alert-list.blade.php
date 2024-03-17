@@ -1,55 +1,45 @@
-<div class="w-full relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    Select
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Device
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Title
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Description
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Date
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach ($this->devices as $device)            
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 p-4">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                </td>
-                <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                    <div class="ps-3">
-                        <div class="text-base font-semibold">{{$device->name}}</div>
-                        <div class="font-normal text-gray-500">{{$this->userEmail}}</div>
-                    </div>
-                </th>
-                <td class="px-6 py-4">
-                    React Developer
-                </td>
-                <td class="px-6 py-4">
-                    <div class="flex items-center">
-                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> Online
-                    </div>
-                </td>
-                <td class="px-6 py-4">
-                    <!-- Modal toggle -->
-                    <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal"
-                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+<div class="grid grid-rows-2" style="height: calc(100vh - 113px); width: 90%;">
+    <div class="relative overflow-x-auto h-full py-8">
+        <h2 class="font-poppins text-xl">Alertas el día de hoy:</h2>
+    </div>
+    <div class="relative overflow-x-auto h-full">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-white uppercase bg-gray-700">
+                <tr>
+                    <th scope="col" class="px-6 py-3 w-60 rounded-ss-lg">
+                        Titulo
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Descripción
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-40">
+                        Dispositivo
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-40 rounded-se-lg">
+                        Fecha
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="">
+                <tr class="bg-white border-b-2">
+                    <th scope="row" class="px-6 py-2">
+                        <div class="w-60 text-red-500 text-sm overflow-hidden overflow-ellipsis whitespace-nowrap">
+                            Intruso detectado
+                        </div>
+                    </th>
+                    <th scope="row" class="px-6 py-2 text-sm font-poppins font-light text-gray-900 whitespace-nowrap">
+                        Se ha detectado movimiento en la ubicacion: <span class="text-yellow-700">"Sala A"</span>
+                    </th>
+                    <td class="px-6 py-2">
+                        <div class="w-40 text-sm font-poppins font-light overflow-hidden overflow-ellipsis whitespace-nowrap">
+                            Dispositivo A
+                        </div>
+                    </td>
+                    <td class="px-6 py-2 text-sm font-poppins font-light">
+                        17/04/2024
+                    </td>
+                </tr>                
+            </tbody>
+        </table>
+    </div>
 </div>
