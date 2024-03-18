@@ -2,8 +2,9 @@
 
 namespace App\Livewire;
 
-use App\Models\Alert as Alertas;
+use App\Models\Alert;
 use App\Models\Device;
+use App\Models\MongoDevice;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
@@ -16,7 +17,7 @@ class DevicesList extends Component
 
     #[Computed()]
     public function devices(){        
-        return Device::where('user_id', Auth::id())->get();
+        return MongoDevice::where('owner', Auth::id())->get();
     }
     #[Computed()]
     public function user(){        
@@ -24,8 +25,13 @@ class DevicesList extends Component
     }
     #[Computed()]
     public function alerts(){
-        return 0;
-        // return Alertas::whereDate('created_at', Carbon::today())->count();
+        $count = Alert::whereDate('created_at', Carbon::today())->count();
+
+        if ($count) {
+            return $count;
+        } else {
+            return 0;
+        }
     }
 
     public function render()

@@ -32,7 +32,7 @@
 
     @stack('modals')
 
-    @livewireScripts
+    @livewireScripts    
 </body>
 
 </html>
