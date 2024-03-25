@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use App\Models\Alert;
+use App\Models\MongoDevice;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 
@@ -25,14 +27,13 @@ class AlertList extends Component
         ]);
     }
 
-    public function newDocument()
+    public function newAlert()
     {
-        $success = Alert::create([
+        Alert::create([
+            'device' => MongoDevice::where('owner', Auth::id())->first(),
             'title' => $this->title,
-            'description' => 'This is a test'
-        ]);
-
-        $success->save();
+            'description' => 'Un intruso ingreso en la siguiente zona: '
+        ]);        
         
         return session()->flash('success', 'Nuevo documento creado');
     }

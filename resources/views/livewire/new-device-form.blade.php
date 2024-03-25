@@ -1,17 +1,39 @@
-<div class="grid grid-cols-2" style="height: calc(100vh - 113px); width: 90%;">
+<div class="grid grid-cols-2 gap-x-8 py-20 bg-cover bg-center" style="height: calc(100vh - 113px); width: 90%;">
     <div class="flex flex-col justify-center">
-        <div class="w-full h-1/3">
-            
+        <div class="h-1/3 w-full">
+            <div class="w-full">
+                <h2 class="font-poppins text-2xl w-3/4 border-b-2 border-b-yellow-500">
+                    Registra tu ExEye y comienza a disfrutar de todas las funciones que tiene para ti.
+                </h2>
+                <p class="w-3/4 mt-2 text-sm text-gray-500">
+                    Una vez hecho el registro de tu ExEye, podras ver la información de tu nuevo dispositivo en la pagina principal y tomar control de sus funciones desde nuestra app móvil.
+                </p>
+            </div>
+            {{-- <button wire:click="deleteAll" class="border">delete all</button> --}}
         </div>
         <div class="flex-1">
-            <form wire:submit="newDevice" novalidate>
+            <form wire:submit.prevent="newDevice" novalidate>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input wire:model="device_id" type="device_id" device_id="device_id" id="device_id"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                        placeholder=" "/>
+                    <label for="device_id"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                        Número unico del dispositivo
+                    </label>
+                    @error('device_id')
+                        <p class="mt-2 font-poppins text-sm text-red-600">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
                 <div class="relative z-0 w-full mb-5 group">
                     <input wire:model="name" type="name" name="name" id="name"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
                         placeholder=" "/>
                     <label for="name"
                         class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                        Nombre de Dispositivo
+                        Nombre del Dispositivo
                     </label>
                     @error('name')
                         <p class="mt-2 font-poppins text-sm text-red-600">
@@ -20,13 +42,22 @@
                     @enderror
                 </div>
                 <div class="relative z-0 w-full mb-5 group">
-                    <input wire:model="model" type="text" name="model" id="model"
+                    {{-- <input wire:model="model" type="text" name="model" id="model"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
                         placeholder=" "/>
                     <label for="type"
                         class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                         Modelo (ESP32-WROOM ó ESP32-CAM)
+                    </label> --}}
+                    <label for="model" class="sr-only">
+                        Underline select
                     </label>
+                    <select wire:model="model" id="model" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-gray-700 peer">
+                        <option disabled selected>Modelo (ESP32-WROOM ó ESP32-CAM)</option>
+                        <option value="ESP32">ESP32</option>
+                        <option value="ESP32-WROOM">ESP32-WROOM</option>
+                        <option value="ESP32-CAM">ESP32-CAM</option>
+                    </select>
                     @error('model')
                         <p class="mt-2 font-poppins text-sm text-red-600">
                             {{ $message }}
@@ -80,5 +111,8 @@
                 </div>
             @endif
         </div>
-    </div>    
+    </div>
+    <div class="flex flex-col justify-start">
+
+    </div>
 </div>

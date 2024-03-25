@@ -6,6 +6,6 @@
     </x-slot>
 
     <div class="w-full py-12">
-        <livewire:devices-list />
+        <livewire:devices-list />        
     </div>
 </x-app-layout>

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use MongoDB\Laravel\Eloquent\Model;
 
-class MongoDevice extends Model
+class Location extends Model
 {
     protected $connection = 'mongodb';
 
-    protected $collection = 'devices';
+    protected $collection = 'locations';
 
-    protected $fillable = ['owner', 'device_id', 'name', 'model', 'location', 'active'];
+    protected $fillable = ['device', 'name', 'temperature', 'moist'];
 }

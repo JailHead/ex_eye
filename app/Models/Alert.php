@@ -10,5 +10,5 @@ class Alert extends Model
 
     protected $collection = 'alerts';
 
-    protected $fillable = ['device', 'title', 'description', 'image', 'video'];
+    protected $fillable = ['device', 'title', 'description', 'image'];
 }

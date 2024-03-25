@@ -1,6 +1,6 @@
 <div class="px-16 pb-4" style="height: calc(100vh - 705px)">
   <div class="h-16 flex items-center border-b border-gray-100">
-    <h2 class="w-full text-center font-bold text-2xl">¿Por que utilizar ExEye?</h2>
+    <h2 class="w-full text-center font-bold text-2xl">¿Por qué utilizar ExEye?</h2>
   </div>
   <div class="grid grid-cols-3 gap-x-12 w-2/3 pt-4 mx-auto" style="height: calc(100% - 64px)">
     <div class="">
