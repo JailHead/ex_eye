@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlertController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeviceController;
 use App\Livewire\NewDeviceForm;
@@ -30,5 +31,8 @@ Route::middleware([
 
     Route::get('/alertas', [AlertController::class, 'index'])->name('alerts');
 
+    Route::get('/estadisticas', [ChartController::class, 'index'])->name('chart');
+    
     Route::get('/nuevo-dispositivo', [DeviceController::class, 'index'])->name('new-device');
+    
 });

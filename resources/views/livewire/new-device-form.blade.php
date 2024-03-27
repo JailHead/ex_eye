@@ -41,16 +41,8 @@
                         </p>
                     @enderror
                 </div>
-                <div class="relative z-0 w-full mb-5 group">
-                    {{-- <input wire:model="model" type="text" name="model" id="model"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
-                        placeholder=" "/>
-                    <label for="type"
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                        Modelo (ESP32-WROOM ó ESP32-CAM)
-                    </label> --}}
+                <div class="relative z-0 w-full mb-5 group">                    
                     <label for="model" class="sr-only">
-                        Underline select
                     </label>
                     <select wire:model="model" id="model" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-gray-700 peer">
                         <option disabled selected>Modelo (ESP32-WROOM ó ESP32-CAM)</option>
@@ -81,7 +73,7 @@
                 <div class="grid md:grid-cols-2">                    
                     <div class="flex">
                         <div class="flex items-center h-5">
-                            <input wire:model="active" id="active" aria-describedby="active" type="checkbox" class="w-4 h-4 text-yellow-500 bg-gray-100 border-gray-300 rounded">
+                            <input wire:model="active" id="active" aria-describedby="active" type="checkbox" class="w-4 h-4 text-yellow-500 focus:ring-transparent focus:ring-2 bg-gray-100 border-gray-300 rounded">
                         </div>
                         <div class="ms-2 text-sm">
                             <label for="active" class="font-medium text-gray-900">Dispositivo activado</label>

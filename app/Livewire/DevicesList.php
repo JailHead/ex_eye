@@ -39,11 +39,13 @@ class DevicesList extends Component
         }
     }
 
-    public function showModalDelete($id, $name){
-        $this->selectedDevice_id = $id;
-        $this->selectedDevice_name = $name;
+    public function deleteDevice($id)
+    {
+        $device = MongoDevice::find($id);
 
-        $this->dispatch('open-modal', device_id:$id, device_name:$name);
+        $device->delete();
+        
+        $this->redirect(route('dashboard'));
     }
     
     public function getLocation($device){

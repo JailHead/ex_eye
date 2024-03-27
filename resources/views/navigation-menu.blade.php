@@ -20,9 +20,9 @@
                         <x-nav-link href="{{ route('alerts') }}" :active="request()->routeIs('alerts')">
                             {{ __('Alertas') }}
                         </x-nav-link>                        
-                        <x-nav-link href="#">
+                        <x-nav-link href="{{ route('chart') }}" :active="request()->routeIs('chart')">
                             {{ __('Estadisticas') }}
-                        </x-nav-link>
+                        </x-nav-link>                        
                         <x-nav-link href="{{ route('new-device') }}" :active="request()->routeIs('new-device')">
                             {{ __('Nuevo Dispositivo') }}
                         </x-nav-link>

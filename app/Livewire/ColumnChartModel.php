@@ -4,29 +4,36 @@ namespace App\Livewire;
 
 use App\Models\Alert;
 use App\Models\MongoDevice;
+use Asantibanez\LivewireCharts\Facades\LivewireCharts;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 
-class AlertList extends Component
+class ColumnChartModel extends Component
 {
-    public $title = '';    
+    public $firstRun = true;
 
-    public function render()
-    {
-        return view('livewire.alert-list');
-    }
+    public $showDataLabels = false;
+
+    protected $listeners = [
+        'onPointClick' => 'handleOnPointClick',
+        'onSliceClick' => 'handleOnSliceClick',
+        'onColumnClick' => 'handleOnColumnClick',
+        'onBlockClick' => 'handleOnBlockClick',
+    ];
 
     #[Computed()]
-    public function alerts(){
+    public function alerts()
+    {
         $authDevices = MongoDevice::where('owner', Auth::id())->get()->pluck('name')->toArray();
-        
+
         return Alert::whereIn('device', $authDevices)->get();
     }
-    
+
     #[Computed()]
-    public function today(){
+    public function today()
+    {
         return Carbon::today()->subDay(1)->toDateString();
     }
 
@@ -47,21 +54,22 @@ class AlertList extends Component
     {
         return Carbon::today()->subDay(30)->toDateString();
     }
-    
+
     #[Computed()]
-    public function datesOfToday(){
+    public function datesOfToday()
+    {
         $alerts = $this->alerts()
             ->pluck('created_at')
             ->map(function ($alert) {
                 $alertDate = Carbon::parse($alert)->toDateString();
                 if ($alertDate == $this->today()) {
                     return $alertDate;
-                }                
-            })            
+                }
+            })
             ->filter()
             ->values()
             ->count();
-            
+
         return $alerts;
     }
 
@@ -95,7 +103,8 @@ class AlertList extends Component
                 }
             })
             ->filter()
-            ->values();
+            ->values()
+            ->count();
 
         return $alerts;
     }
@@ -118,12 +127,31 @@ class AlertList extends Component
         return $alerts;
     }
 
-    #[Computed()]
-    public function alertsCount(){
-        return Alert::all()->count();
+    public function handleOnColumnClick($column)
+    {
+        dd($column['value']);
     }
 
-    public function deleteDocuments(){
-        Alert::truncate();
+    public function render()
+    {
+        $authDevices = MongoDevice::where('owner', Auth::id())->get()->pluck('name')->toArray();
+        $alerts = Alert::whereIn('device', $authDevices)->get();
+
+        $columnChartModel = LivewireCharts::columnChartModel()
+            ->setAnimated($this->firstRun)
+            ->withOnColumnClickEventName('onColumnClick')
+            ->setLegendVisibility(false)
+            ->setDataLabelsEnabled($this->showDataLabels)
+            //->setOpacity(0.25)
+            ->setColors(['#b01a1b', '#d41b2c', '#ec3c3b', '#f66665'])
+            ->setColumnWidth(200)
+            ->withGrid()            
+            ->addColumn('Hoy', $this->datesOfToday(), '#f6ad55')
+            ->addColumn('Hace 1 semana', $this->datesOfLastWeek(), '#fc8181')
+            ->addColumn('Hace 2 semanas', $this->datesOfLastTwoWeeks(), '#90cdf4')
+            ->addColumn('Hace 1 mes', $this->datesOfLastMonth(), '#90cdf4')
+            ->setHorizontal();
+
+        return view('livewire.column-chart-model')->with(['columnChartModel' => $columnChartModel]);
     }
 }
