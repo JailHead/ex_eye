@@ -1,7 +1,7 @@
 <div class="flex flex-col" style="height: calc(100vh - 113px); width: 100%;">
     <div class="relative overflow-x-auto h-1/6 mt-8">
         <div class="px-6 flex flex-col justify-center h-full rounded-lg">
-            <h2 class="font-poppins font-bold text-2xl">Estas son tus alertas registradas por tus dispositivos.</h2>
+            <h2 class="font-poppins font-bold text-2xl">Estas son tus alertas registradas.</h2>
             <p class="text-sm text-gray-500">
                 Aqui puedes visualizar todas las alertas capturadas por tu o tus dispositivos,
                 no pierdas ningun rastro de tus alertas!
@@ -9,8 +9,7 @@
         </div>
     </div>
     <div class="flex gap-x-16 relative mb-2 h-7 pl-6">
-        <h2 class="font-poppins text-base">Total de alertas: <span class="font-poppins text-sm font-medium">{{ $this->alertsCount }}</span></h2>
-        <h2 class="font-poppins text-base">Fecha actual: <span class="font-poppins text-sm font-medium">{{ $this->today }}</span></h2>
+        <h2 class="font-poppins text-base">Total de alertas: <span class="font-poppins text-sm font-medium">{{ $this->alertsCount }}</span>
     </div>
     <div class="relative overflow-auto h-full mb-24 border-b-4 border-b-yellow-500">
         <table class="overflow-y-scroll w-full text-sm text-left rtl:text-right shadow-lg text-gray-500">
